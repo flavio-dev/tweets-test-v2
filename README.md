@@ -17,6 +17,13 @@ gulp
 - Add of the footer.scss
 - Clean of the class naming and of the JS
 - Simple detection of links/#/@ in tweet text using RegExp
-- Put in place a quick build for bulking up the assets
+- Put in place a quick gulp build for bulking up the assets
 - SASS
 - Removing the JS around the burger toggle for a all CSS solution
+
+## More to do...
+
+- SVG instead of PNG
+- Use of full MVC framework?
+- Nicer templating solution than inlined in the HTML
+- ...
