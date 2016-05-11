@@ -107,6 +107,7 @@ body {
     height: 17px;
     text-indent: -999px;
     overflow: hidden;
+	cursor: pointer;
 }
 
 #header input#toggle-nav {
