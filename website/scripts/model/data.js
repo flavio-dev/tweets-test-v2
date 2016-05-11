@@ -6,7 +6,7 @@ var dataMangement = function() {
         "created_at": "Thu Nov 05 15:45:09 +0000 2015",
         "id": 662294588342726700,
         "id_str": "662294588342726656",
-        "text": "Access to #DigitalHealth lags behind patient interest | https://t.co/9VECpA1Z9d",
+        "text": "Access to #DigitalHealth lags behind patient interest | https://t.co/9VECpA1Z9d       @Tictrac",
         "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
         "truncated": false,
         "in_reply_to_status_id": null,
@@ -2166,7 +2166,7 @@ var dataMangement = function() {
     // format the text also with the links
     // returns that same list of tweets that have been upgraded.
     var formatDateAndText = function(tweets) {
-        var linkHttpReg = /http(s*):\/\/(\w.+)/g;
+        var linkHttpReg = /(http(s*):\/\/)([^\s]+)/g;
         var atReg = /@(\w+)/g;
         var hashtagReg = /#(\w+)/g;
 
@@ -2178,12 +2178,11 @@ var dataMangement = function() {
 
             // formating the text
             var text = tweet.text;
-            text = text.replace(linkHttpReg, '<a href="https://$2" target="_blank">$2</a>');
-            text = text.replace(atReg, '<a href="https://twitter.com/$1" target="_blank">@$1</a>');
+            text = text.replace(linkHttpReg, '<a href="$1$3" target="_blank">$1$3</a>');
             text = text.replace(hashtagReg, '<a href="https://twitter.com/hashtag/$1" target="_blank">#$1</a>');
+            text = text.replace(atReg, '<a href="https://twitter.com/$1" target="_blank">@$1</a>');
 
             tweet.text_formated = text;
-            console.log('text = '+text);
         });
 
         return tweets;
