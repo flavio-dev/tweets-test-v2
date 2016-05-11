@@ -1,30 +1,9 @@
 $(document).ready(function() {
-
-    $('#header .toggle').click(function(e) {
-        $('#header nav').toggleClass('expanded');
-        e.preventDefault();
-        return false;
-    });
-
     app.init(5);
 });
 
-// this is the app
+// this is the representation of the app
 var app = function() {
-
-    // Deciding to put the localStorage directly in the app object
-    // as part of the management of the app life.
-    // args: val - 'rel' or 'abs'
-    var setInLocalStorage = function(val) {
-        localStorage.setItem('dateFormat', val);
-    }
-
-    // Returns the state of localStorage for dateFormat
-    // args: none
-    var getFromLocalStorage = function() {
-        return localStorage.getItem('dateFormat');
-    }
-
     // this is the initialisation of the controller component.
     // args: n - take the number of tweets to display at load
     var init = function(n) {
@@ -40,7 +19,25 @@ var app = function() {
     }
 
     return {
-        init: init,
+        init: init
+    }
+}();
+
+// helper for the management of the local storage
+var storage = function() {
+    // Set the localStorage for the persistent dateFormat
+    // args: val - 'rel' or 'abs'
+    var setInLocalStorage = function(val) {
+        localStorage.setItem('dateFormat', val);
+    }
+
+    // Returns the state of localStorage for dateFormat
+    // args: none
+    var getFromLocalStorage = function() {
+        return localStorage.getItem('dateFormat');
+    }
+
+    return {
         setInLocalStorage: setInLocalStorage,
         getFromLocalStorage: getFromLocalStorage
     }

@@ -109,8 +109,12 @@ body {
     overflow: hidden;
 }
 
-#header nav.expanded ul {
-    display: block;
+#header input#toggle-nav {
+	display: none;
+}
+
+#header input#toggle-nav:checked + nav ul {
+	display: block;
 }
 
 #header nav ul {

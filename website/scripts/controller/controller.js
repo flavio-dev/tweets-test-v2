@@ -6,7 +6,7 @@ var controller = function() {
     // happens as soon as the page is loaded
     // args: none
     var setRelOrAbsDate = function() {
-        var dateFormat = app.getFromLocalStorage();
+        var dateFormat = storage.getFromLocalStorage();
         dateFormat == 'abs' ? view.displayDateInAbsolute() : view.displayDateInRelative();
     }
 
@@ -14,7 +14,7 @@ var controller = function() {
     // args: val - 'rel' or 'abs'
     var changeRelOrAbsDate = function(val) {
         val == 'abs' ? view.displayDateInAbsolute() : view.displayDateInRelative();
-        app.setInLocalStorage(val);
+        storage.setInLocalStorage(val);
     }
 
     // the controller here is asking the model the data needed by the view
