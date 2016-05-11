@@ -1,0 +1,72 @@
+/* style for the tweets
+
+	prefix: tw
+
+*/
+
+.tw {
+	border-bottom: #EEE 1px solid;
+	display: flex;
+	margin: 0 20px;
+	padding: 20px 0;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+	
+	@media all and (min-width: 600px) {
+		align-items: center;
+	}
+}
+
+.tw__pic {
+	height: 48px;
+	min-width: 48px;
+}
+
+.tw__container {
+	margin-left: 15px;
+	width: 100%;
+}
+
+.tw__info {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 3px;
+
+	a {
+		color: #666;
+		text-decoration: none;
+	}
+}
+
+.tw__info__user-name {
+	font-weight: bold;
+}
+
+.tw__info__date {
+	font-style: italic;
+}
+
+.tw__info__date--rel {
+	display: block;
+}
+
+.tw__info__date--abs {
+	display: none;
+}
+
+.js--show-abs {
+	.tw__info__date--abs {
+		display: block;
+	}
+
+	.tw__info__date--rel {
+		display: none;
+	}
+}
+
+.tw__content a {
+	color: #30BAFF;
+	text-decoration: none;
+}

@@ -1,6 +1,6 @@
-var dataMangement = function() {
+// Model: responsible for maintaining the data
 
-    // moving the data into the closure so it's not at global scope;
+var dataMangement = function() {
     var data = [
        {
         "created_at": "Thu Nov 05 15:45:09 +0000 2015",
@@ -2147,28 +2147,60 @@ var dataMangement = function() {
       }
     ];
 
+    var months = [
+        "January",
+        "February",
+        "March",
+        "Avril",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
 
-    var dateIntoPrettyDate = function(tweets) {
+    // Takes a list of tweets as arguments, and add the relative date to the object.
+    // format the text also with the links
+    // returns that same list of tweets that have been upgraded.
+    var formatDateAndText = function(tweets) {
+        var linkHttpReg = /http(s*):\/\/(\w.+)/g;
+        var atReg = /@(\w+)/g;
+        var hashtagReg = /#(\w+)/g;
+
         tweets.forEach(function(tweet) {
-            var dateTransformed = prettyDate(tweet.created_at);
-            tweet.created_at_pretty = dateTransformed;
+            // formating the dates
+            var date = new Date(tweet.created_at);
+            tweet.created_at_rel = prettyDate(tweet.created_at);
+            tweet.created_at_abs = date.getDate() + ' ' + months[date.getMonth()];
+
+            // formating the text
+            var text = tweet.text;
+            text = text.replace(linkHttpReg, '<a href="https://$2" target="_blank">$2</a>');
+            text = text.replace(atReg, '<a href="https://twitter.com/$1" target="_blank">@$1</a>');
+            text = text.replace(hashtagReg, '<a href="https://twitter.com/hashtag/$1" target="_blank">#$1</a>');
+
+            tweet.text_formated = text;
+            console.log('text = '+text);
         });
 
         return tweets;
     }
 
+    // returns all the tweets with the relative data attached to it
     var getAllTweets = function() {
-        return data;
+        return formatDateAndText(data);
     }
 
+    // returns only the nth tweet(s) with the relative data attached to it
     var getLastNTweets = function(n) {
-        var lastNTweets = data.slice(0, n);
-        lastNTweets = dateIntoPrettyDate(lastNTweets);
-        return lastNTweets;
+        return formatDateAndText(data.slice(0, n));
     }
 
     return {
         getAllTweets: getAllTweets,
         getLastNTweets: getLastNTweets
     }
-}()
+}();

@@ -1,0 +1,36 @@
+/* style for the footer
+
+	prefix: ft
+
+*/
+
+footer {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.ft__text {
+	font-weight: bold;
+}
+
+.ft__date-format {
+	color: #30BAFF;
+
+	span {
+		cursor: pointer;
+	}
+}
+
+.ft__date-format--rel {
+	text-decoration: underline;
+}
+
+.js--show-abs ~ footer {
+	.ft__date-format--abs {
+		text-decoration: underline;
+	}
+
+	.ft__date-format--rel {
+		text-decoration: none;
+	}
+}

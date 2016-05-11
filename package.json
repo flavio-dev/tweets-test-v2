@@ -1,0 +1,17 @@
+{
+	"name": "elder",
+	"description": "elder test",
+	"version": "0.0.0",
+	"author": "@flavio_dev",
+	"private": true,
+	"devDependencies": {
+		"del": "^2.2.0",
+		"gulp": "~3.9.1",
+		"gulp-autoprefixer": "3.1.0",
+		"gulp-babel": "^6.1.2",
+		"gulp-concat": "~2.6.0",
+		"gulp-jshint": "~2.0.1",
+		"gulp-sass": "~2.3.1",
+		"gulp-uglify": "~1.5.3"
+	}
+}
